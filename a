@@ -1,0 +1,357 @@
+Name - Devansh Singh
+Roll No - 102103686
+Group - 3CO33
+ML - Assignment 1
+
+
+
+
+Q1: Questions on Basic NumPy Array
+
+
+
+
+import numpy as np
+
+arr = np.array([1, 2, 3, 6, 4, 5])
+a=np.flip(arr)
+
+print(a)
+
+(b) Flatten the NumPy arr: array1 = np.array([[1, 2, 3], [2, 4, 5], [1, 2, 3]])
+using any two NumPy in-built methods
+
+array1 = np.array([[1, 2, 3], [2, 4, 5], [1, 2, 3]])
+flattened_array1 = array1.flatten()
+print("Flattened array using flatten():", flattened_array1)
+flattened_array2 = array1.ravel()
+print("Flattened array using ravel():", flattened_array2)
+
+(c) Compare the following numpy arrays:
+
+arr1 = np.array([[1, 2], [3, 4]])
+arr2 = np.array([[1, 2], [3, 4]])
+
+arr1 = np.array([[1, 2], [3, 4]])
+arr2 = np.array([[1, 2], [3, 4]])
+are_equal = np.array_equal(arr1, arr2)
+
+print("Are the arrays equal?", are_equal)
+
+(d) Find the most frequent value and their indice(s) in the following arrays:
+i. x = np.array([1,2,3,4,5,1,2,1,1,1])
+ii. y = np.array([1, 1, 1, 2, 3, 4, 2, 4, 3, 3, ])
+
+x = np.array([1, 2, 3, 4, 5, 1, 2, 1, 1, 1])
+y = np.array([1, 1, 1, 2, 3, 4, 2, 4, 3, 3])
+def most_frequent_value_and_indices(arr):
+    counts = np.bincount(arr)
+    most_frequent_value = np.argmax(counts)
+    indices = np.where(arr == most_frequent_value)[0]
+
+    return most_frequent_value, indices
+
+x_value, x_indices = most_frequent_value_and_indices(x)
+print("For array x:")
+print("Most frequent value:", x_value)
+print("Indices of most frequent value:", x_indices)
+
+y_value, y_indices = most_frequent_value_and_indices(y)
+print("For array y:")
+print("Most frequent value:", y_value)
+print("Indices of most frequent value:", y_indices)
+
+(e) For the array gfg = np.matrix('[4, 1, 9; 12, 3, 1; 4, 5, 6]'), find
+i. Sum of all elements
+ii. Sum of all elements row-wise
+iii. Sum of all elements column-wise
+
+gfg = np.matrix('[4, 1, 9; 12, 3, 1; 4, 5, 6]')
+
+sum_all_elements = np.sum(gfg)
+
+sum_row_wise = np.sum(gfg, axis=1)
+
+sum_column_wise = np.sum(gfg, axis=0)
+
+print("Sum of all elements:", sum_all_elements)
+print("Sum of all elements row-wise:", sum_row_wise)
+print("Sum of all elements column-wise:", sum_column_wise)
+
+(f) For the matrix: n_array = np.array([[55, 25, 15],[30, 44, 2],[11, 45, 77]]), find
+i. Sum of diagonal elements
+ii. Eigen values of matrix
+iii. Eigen vectors of matrix
+iv. Inverse of matrix
+v. Determinant of matrix
+
+n_array = np.array([[55, 25, 15], [30, 44, 2], [11, 45, 77]])
+
+sum_diagonal = np.trace(n_array)
+print("Sum of diagonal elements:", sum_diagonal)
+
+eigenvalues, eigenvectors = np.linalg.eig(n_array)
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+
+inverse_matrix = np.linalg.inv(n_array)
+print("Inverse of the matrix:\n", inverse_matrix)
+
+determinant = np.linalg.det(n_array)
+print("Determinant of the matrix:", determinant)
+
+
+(g) Multiply the following matrices and also find covariance between matrices using NumPy:
+i. p = [[1, 2], [2, 3]]
+q = [[4, 5], [6, 7]]
+ii. p = [[1, 2], [2, 3], [4, 5]]
+q = [[4, 5, 1], [6, 7, 2]]
+
+p1 = np.array([[1, 2], [2, 3]])
+q1 = np.array([[4, 5], [6, 7]])
+
+product1 = np.dot(p1, q1)
+print("Part (i) - Matrix multiplication result:\n", product1)
+
+p1_flat = p1.flatten()
+q1_flat = q1.flatten()
+cov_matrix1 = np.cov(p1_flat, q1_flat)
+print("Part (i) - Covariance matrix:\n", cov_matrix1)
+
+p2 = np.array([[1, 2], [2, 3], [4, 5]])
+q2 = np.array([[4, 5, 1], [6, 7, 2]])
+
+product2 = np.dot(p2, q2)
+print("Part (ii) - Matrix multiplication result:\n", product2)
+
+p2_flat = p2.flatten()
+q2_flat = q2.flatten()
+cov_matrix2 = np.cov(p2_flat, q2_flat)
+print("Part (ii) - Covariance matrix:\n", cov_matrix2)
+
+h) For the matrices: x = np.array([[2, 3, 4], [3, 2, 9]]); y = np.array([[1, 5, 0], [5, 10, 3]]),
+find inner, outer and cartesian product?
+
+x = np.array([[2, 3, 4], [3, 2, 9]])
+y = np.array([[1, 5, 0], [5, 10, 3]])
+
+x_flat = x.flatten()
+y_flat = y.flatten()
+
+inner_product = np.dot(x_flat, y_flat)
+print("Inner product:", inner_product)
+
+outer_product = np.outer(x_flat, y_flat)
+print("Outer product:\n", outer_product)
+
+x_expanded = x_flat[:, np.newaxis]
+y_repeated = np.repeat(y_flat, len(x_flat)).reshape(len(x_flat), -1)
+cartesian_product = np.concatenate([x_expanded, y_repeated], axis=1)
+print("Cartesian product:\n", cartesian_product)
+
+Q2: Based on NumPy Mathematics and Statistics
+
+(a) For the array: array = np.array([[1, -2, 3],[-4, 5, -6]])
+i. Find element-wise absolute value
+ii. Find the 25th, 50th, and 75th percentile of flattened array, for each column, for each
+row.
+iii. Mean, Median and Standard Deviation of flattened array, of each column, and
+each row
+
+array = np.array([[1, -2, 3], [-4, 5, -6]])
+
+absolute_array = np.abs(array)
+print("Element-wise absolute value:")
+print(absolute_array)
+
+flattened_array = array.flatten()
+percentiles_flat = np.percentile(flattened_array, [25, 50, 75])
+
+print("\nPercentiles of flattened array:")
+print(f"25th percentile: {percentiles_flat[0]}")
+print(f"50th percentile: {percentiles_flat[1]}")
+print(f"75th percentile: {percentiles_flat[2]}")
+
+percentiles_columns = np.percentile(array, [25, 50, 75], axis=0)
+print("\nPercentiles of each column:")
+print(f"25th percentile: {percentiles_columns[0]}")
+print(f"50th percentile: {percentiles_columns[1]}")
+print(f"75th percentile: {percentiles_columns[2]}")
+
+percentiles_rows = np.percentile(array, [25, 50, 75], axis=1)
+print("\nPercentiles of each row:")
+print(f"25th percentile: {percentiles_rows[0]}")
+print(f"50th percentile: {percentiles_rows[1]}")
+print(f"75th percentile: {percentiles_rows[2]}")
+mean_flat = np.mean(flattened_array)
+median_flat = np.median(flattened_array)
+std_flat = np.std(flattened_array)
+
+print("\nFlattened array statistics:")
+print(f"Mean: {mean_flat}")
+print(f"Median: {median_flat}")
+print(f"Standard Deviation: {std_flat}")
+
+mean_columns = np.mean(array, axis=0)
+median_columns = np.median(array, axis=0)
+std_columns = np.std(array, axis=0)
+
+print("\nEach column statistics:")
+print(f"Mean: {mean_columns}")
+print(f"Median: {median_columns}")
+print(f"Standard Deviation: {std_columns}")
+
+mean_rows = np.mean(array, axis=1)
+median_rows = np.median(array, axis=1)
+std_rows = np.std(array, axis=1)
+
+print("\nEach row statistics:")
+print(f"Mean: {mean_rows}")
+print(f"Median: {median_rows}")
+print(f"Standard Deviation: {std_rows}")
+
+(b) For the array: a = np.array([-1.8, -1.6, -0.5, 0.5,1.6, 1.8, 3.0]). Find floor, ceiling
+and truncated value, rounded values
+
+
+a = np.array([-1.8, -1.6, -0.5, 0.5, 1.6, 1.8, 3.0])
+
+floor_values = np.floor(a)
+print("Floor values:")
+print(floor_values)
+
+ceiling_values = np.ceil(a)
+print("\nCeiling values:")
+print(ceiling_values)
+
+truncated_values = np.trunc(a)
+print("\nTruncated values:")
+print(truncated_values)
+
+rounded_values = np.round(a)
+print("\nRounded values:")
+print(rounded_values)
+
+Q3: Based on Searching and Sorting
+
+(a) For the array: array = np.array([10, 52, 62, 16, 16, 54, 453]), find
+i. Sorted array
+ii. Indices of sorted array
+iii. 4 smallest elements
+iv. 5 largest elements
+
+array = np.array([10, 52, 62, 16, 16, 54, 453])
+
+sorted_array = np.sort(array)
+print("Sorted array:")
+print(sorted_array)
+
+indices_of_sorted_array = np.argsort(array)
+print("\nIndices of sorted array:")
+print(indices_of_sorted_array)
+
+smallest_4_elements = np.partition(array, 4)[:4]
+smallest_4_elements_sorted = np.sort(smallest_4_elements)
+print("\n4 smallest elements:")
+print(smallest_4_elements_sorted)
+
+largest_5_elements = np.partition(array, -5)[-5:]
+largest_5_elements_sorted = np.sort(largest_5_elements)
+print("\n5 largest elements:")
+print(largest_5_elements_sorted)
+
+
+(b) For the array: array = np.array([1.0, 1.2, 2.2, 2.0, 3.0, 2.0]), find
+i. Integer elements only
+ii. Float elements only
+
+array = np.array([1.0, 1.2, 2.2, 2.0, 3.0, 2.0])
+
+integer_elements = array[array == np.floor(array)]
+print("Integer elements only:")
+print(integer_elements)
+
+float_elements = array[array != np.floor(array)]
+print("\nFloat elements only:")
+print(float_elements)
+
+Q4:
+(a) Write a function named img_to_array(path) that reads an image from a specified path and
+save it as text file on local machine? (Note: use separate cases for RGB and Grey Scale
+images)
+
+pip install opencv-python
+
+import cv2
+import numpy as np
+from google.colab import files
+
+uploaded = files.upload()
+
+def img_to_array(path):
+
+    img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+
+    if img is None:
+        raise FileNotFoundError(f"The image at path {path} could not be found or read.")
+
+    if len(img.shape) == 3:
+        img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+        text_file_path = path + "_rgb.txt"
+        with open(text_file_path, 'w') as f:
+            for row in img_rgb:
+                for pixel in row:
+                    f.write(' '.join(map(str, pixel)) + ' ')
+                f.write('\n')
+
+    elif len(img.shape) == 2:
+        text_file_path = path + "_greyscale.txt"
+        with open(text_file_path, 'w') as f:
+            for row in img:
+                f.write(' '.join(map(str, row)) + '\n')
+    else:
+        raise ValueError("Unsupported image format or image array dimension")
+
+    print(f"Image data saved to {text_file_path}")
+    return text_file_path
+
+filename = list(uploaded.keys())[0]
+
+text_file_path = img_to_array(filename)
+
+files.download(text_file_path)
+
+(b) Load the saved file into jupyter notebook?
+
+from google.colab import files
+
+uploaded = files.upload()
+
+file_name = list(uploaded.keys())[0]
+
+import pandas as pd
+import json
+
+try:
+    df = pd.read_csv(file_name)
+    print("CSV File loaded successfully!")
+    print(df.head())
+except Exception as e:
+    print(f"Error loading CSV file: {e}")
+
+try:
+    with open(file_name, 'r') as file:
+        text_content = file.read()
+    print("\nText File loaded successfully!")
+    print(text_content)
+except Exception as e:
+    print(f"Error loading text file: {e}")
+
+try:
+    with open(file_name, 'r') as file:
+        json_data = json.load(file)
+    print("\nJSON File loaded successfully!")
+    print(json_data)
+except Exception as e:
+    print(f"Error loading JSON file: {e}")
